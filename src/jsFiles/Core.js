@@ -4,7 +4,8 @@ import CannonDebugger from 'cannon-es-debugger'
 
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { ThreeC } from "./ThreeC";
-import { MapC } from "./MapC";
+import { GunUp_MapC } from "./GunUp_MapC";
+import { ShotgunC } from "./ShotgunC";
 
 ThreeC.init();
 
@@ -15,7 +16,7 @@ const gltfLoader = new GLTFLoader();
 
 gltfLoader.load("/GunUp_Map.glb", (map) => {
   ThreeC.scene.add(map.scene);
-  MapC.init(map);
+  GunUp_MapC.init(map);
 });
 
 const clock = new THREE.Clock();
@@ -28,6 +29,7 @@ function animate() {
 
   world.fixedStep();
   cannonDebugger.update();
+  ShotgunC.update()
   ThreeC.update();
 
   requestAnimationFrame(animate);
